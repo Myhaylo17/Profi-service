@@ -1,1578 +1,372 @@
-/* ============================================
-   ПРОФІ СЕРВІС — Auto Service Business Card
-   Dark theme with racing red & blue accents
-   ============================================ */
-
-/* CSS Variables */
-:root {
-    --bg-primary: #0A0A0B;
-    --bg-elevated: #121214;
-    --bg-surface: #1A1A1D;
-    --border: #242428;
-    --text-primary: #FFFFFF;
-    --text-secondary: #9CA3AF;
-    --text-tertiary: #6B7280;
-    --accent-red: #DC2626;
-    --accent-red-dark: #B91C1C;
-    --accent-blue: #1D4ED8;
-    --font-heading: 'Montserrat', sans-serif;
-    --font-body: 'Inter', sans-serif;
-    --font-decorative: 'Oswald', sans-serif;
-    --transition: all 0.3s ease;
-    --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.4);
-    --shadow-hover: 0 8px 32px rgba(220, 38, 38, 0.15);
-}
-
-/* Reset & Base */
-*, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-    font-size: 16px;
-}
-
-body {
-    font-family: var(--font-body);
-    background: var(--bg-primary);
-    color: var(--text-primary);
-    line-height: 1.6;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-ul {
-    list-style: none;
-}
-
-img {
-    max-width: 100%;
-    display: block;
-}
-
-/* Container */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-}
-
-@media (min-width: 768px) {
-    .container {
-        padding: 0 40px;
-    }
-}
-
-/* ============================================
-   HEADER / NAVIGATION
-   ============================================ */
-
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 64px;
-    background: rgba(26, 26, 29, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    z-index: 100;
-    animation: navSlideDown 0.6s ease forwards;
-}
-
-@keyframes navSlideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.nav-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
-}
-
-/* Logo */
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.logo-img {
-    height: 44px;
-    width: auto;
-}
-
-.logo-text {
-    display: none;
-}
-
-.logo-title {
-    font-family: var(--font-heading);
-    font-weight: 900;
-    font-size: 16px;
-    letter-spacing: 0.02em;
-    color: var(--text-primary);
-    line-height: 1.2;
-}
-
-.logo-subtitle {
-    font-family: var(--font-body);
-    font-size: 10px;
-    color: var(--text-tertiary);
-    line-height: 1.2;
-}
-
-@media (min-width: 768px) {
-    .logo-text {
-        display: flex;
-        flex-direction: column;
-    }
-}
-
-/* Navigation */
-.nav {
-    display: none;
-}
-
-.nav-list {
-    display: flex;
-    gap: 32px;
-}
-
-.nav-link {
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--text-secondary);
-    transition: var(--transition);
-    position: relative;
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--accent-red);
-    transition: width 0.3s ease;
-}
-
-.nav-link:hover {
-    color: var(--text-primary);
-}
-
-.nav-link:hover::after {
-    width: 100%;
-}
-
-@media (min-width: 1024px) {
-    .nav {
-        display: block;
-    }
-}
-
-/* CTA Button */
-.nav-cta {
-    display: none;
-    padding: 10px 24px;
-    background: var(--accent-red);
-    color: var(--text-primary);
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    border-radius: 4px;
-    transition: var(--transition);
-    overflow: hidden;
-}
-
-.nav-cta:hover {
-    background: var(--accent-red-dark);
-    transform: scale(1.02);
-}
-
-.typing-text {
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
-    animation: typing 3s steps(15) 1s forwards;
-    width: 0;
-}
-
-@keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-}
-
-@media (min-width: 768px) {
-    .nav-cta {
-        display: inline-block;
-    }
-}
-
-/* Mobile Toggle */
-.nav-toggle {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-}
-
-.nav-toggle span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: var(--text-primary);
-    transition: var(--transition);
-}
-
-.nav-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.nav-toggle.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.nav-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-}
-
-@media (min-width: 1024px) {
-    .nav-toggle {
-        display: none;
-    }
-}
-
-/* Mobile Menu */
-.nav-mobile {
-    display: none;
-    position: fixed;
-    top: 64px;
-    left: 0;
-    right: 0;
-    background: rgba(26, 26, 29, 0.98);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 24px;
-    z-index: 99;
-}
-
-.nav-mobile.active {
-    display: block;
-    animation: fadeIn 0.3s ease;
-}
-
-.nav-mobile .nav-list {
-    flex-direction: column;
-    gap: 20px;
-}
-
-.nav-mobile .nav-link {
-    font-size: 16px;
-    display: block;
-    padding: 8px 0;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* ============================================
-   BUTTONS
-   ============================================ */
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 14px 32px;
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: var(--transition);
-    border: none;
-}
-
-.btn-primary {
-    background: var(--accent-red);
-    color: var(--text-primary);
-}
-
-.btn-primary:hover {
-    background: var(--accent-red-dark);
-    transform: scale(1.02);
-    box-shadow: 0 4px 20px rgba(220, 38, 38, 0.3);
-}
-
-.btn-secondary {
-    background: transparent;
-    color: var(--accent-red);
-    border: 1px solid var(--accent-red);
-}
-
-.btn-secondary:hover {
-    background: rgba(220, 38, 38, 0.1);
-    transform: scale(1.02);
-}
-
-/* ============================================
-   HERO SECTION
-   ============================================ */
-
-.hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    background: radial-gradient(ellipse at 30% 50%, rgba(26, 26, 29, 0.8) 0%, var(--bg-primary) 70%);
-    overflow: hidden;
-    padding-top: 64px;
-}
-
-/* Racing Stripe */
-.racing-stripe-hero {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        135deg,
-        transparent 48%,
-        rgba(220, 38, 38, 0.06) 48%,
-        rgba(220, 38, 38, 0.06) 52%,
-        transparent 52%
-    );
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* Hero Particles */
-.hero-particles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.particle {
-    position: absolute;
-    width: 3px;
-    height: 3px;
-    background: var(--accent-red);
-    border-radius: 1px;
-    opacity: 0;
-    animation: particleBurst 1.5s ease forwards;
-}
-
-@keyframes particleBurst {
-    0% {
-        opacity: 1;
-        transform: translate(0, 0) scale(1);
-    }
-    100% {
-        opacity: 0;
-        transform: translate(var(--tx), var(--ty)) scale(0);
-    }
-}
-
-/* Hero Layout */
-.hero-container {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    width: 100%;
-}
-
-.hero-content {
-    flex: 1;
-    max-width: 600px;
-}
-
-.hero-visual {
-    display: none;
-}
-
-@media (min-width: 1024px) {
-    .hero-container {
-        gap: 60px;
-    }
-    .hero-visual {
-        display: block;
-        flex: 0 0 45%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-}
-
-/* Hero Text */
-.hero-title {
-    font-family: var(--font-heading);
-    font-weight: 900;
-    font-size: clamp(32px, 5vw, 64px);
-    line-height: 1.05;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-    opacity: 0;
-    transform: translateX(-40px);
-    animation: heroSlideIn 0.8s ease forwards;
-}
-
-.hero-title .accent {
-    color: var(--accent-red);
-}
-
-.hero-subtitle {
-    font-family: var(--font-body);
-    font-size: 18px;
-    color: var(--text-secondary);
-    margin-bottom: 32px;
-    max-width: 480px;
-    opacity: 0;
-    transform: translateX(-40px);
-    animation: heroSlideIn 0.8s ease 0.12s forwards;
-}
-
-.hero-cta {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 24px;
-    flex-wrap: wrap;
-    opacity: 0;
-    transform: scale(0.9);
-    animation: heroFadeScale 0.5s ease 0.6s forwards;
-}
-
-.hero-info {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    color: var(--text-tertiary);
-    opacity: 0;
-    transform: translateX(-40px);
-    animation: heroSlideIn 0.8s ease 0.36s forwards;
-}
-
-.hero-info svg {
-    flex-shrink: 0;
-    color: var(--accent-red);
-}
-
-@keyframes heroSlideIn {
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes heroFadeScale {
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* Sphere Canvas */
-.sphere-canvas {
-    width: 280px;
-    height: 280px;
-    opacity: 0;
-    transform: scale(0.8);
-    animation: sphereAppear 1s ease 0.3s forwards;
-    cursor: pointer;
-}
-
-.sphere-canvas canvas {
-    width: 100% !important;
-    height: 100% !important;
-}
-
-@keyframes sphereAppear {
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-@media (min-width: 1280px) {
-    .sphere-canvas {
-        width: 350px;
-        height: 350px;
-    }
-}
-
-/* Scroll Indicator */
-.hero-scroll {
-    position: absolute;
-    bottom: 32px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    z-index: 2;
-}
-
-.hero-scroll span {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--text-tertiary);
-    font-family: var(--font-decorative);
-}
-
-.scroll-line {
-    width: 1px;
-    height: 40px;
-    background: linear-gradient(to bottom, var(--accent-red), transparent);
-    animation: scrollPulse 2s ease infinite;
-}
-
-@keyframes scrollPulse {
-    0%, 100% { opacity: 0.4; transform: scaleY(0.6); }
-    50% { opacity: 1; transform: scaleY(1); }
-}
-
-/* ============================================
-   RACING STRIPES (Global)
-   ============================================ */
-
-.racing-line {
-    width: 60px;
-    height: 3px;
-    background: var(--accent-red);
-    margin: 16px 0;
-}
-
-.racing-stripe-services {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(135deg);
-    width: 200%;
-    height: 120px;
-    background: repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent 80px,
-        rgba(220, 38, 38, 0.03) 80px,
-        rgba(220, 38, 38, 0.03) 200px
-    );
-    pointer-events: none;
-    z-index: 0;
-}
-
-.racing-stripe-services::before {
-    content: 'PROFI SERVICE PROFI SERVICE PROFI SERVICE PROFI SERVICE';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    font-family: var(--font-decorative);
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(220, 38, 38, 0.04);
-    white-space: nowrap;
-    animation: stripeScroll 20s linear infinite;
-}
-
-@keyframes stripeScroll {
-    from { transform: translateY(-50%) translateX(0); }
-    to { transform: translateY(-50%) translateX(-50%); }
-}
-
-.racing-stripe-contacts {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        135deg,
-        transparent 49%,
-        rgba(220, 38, 38, 0.04) 49%,
-        rgba(220, 38, 38, 0.04) 51%,
-        transparent 51%
-    );
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* ============================================
-   SECTION HEADERS
-   ============================================ */
-
-.section-header {
-    text-align: center;
-    margin-bottom: 60px;
-    position: relative;
-    z-index: 1;
-}
-
-.section-title {
-    font-family: var(--font-heading);
-    font-weight: 800;
-    font-size: clamp(28px, 3.5vw, 36px);
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    color: var(--text-primary);
-}
-
-.section-subtitle {
-    font-family: var(--font-body);
-    font-size: 16px;
-    color: var(--text-secondary);
-    margin-top: 12px;
-}
-
-/* ============================================
-   SERVICES SECTION
-   ============================================ */
-
-.services {
-    position: relative;
-    padding: 100px 0;
-    background: var(--bg-primary);
-    overflow: hidden;
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    position: relative;
-    z-index: 1;
-}
-
-@media (min-width: 640px) {
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 1024px) {
-    .services-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-    }
-}
-
-/* Service Card */
-.service-card {
-    background: var(--bg-elevated);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 28px;
-    transition: var(--transition);
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-.service-card.visible {
-    animation: cardFadeIn 0.6s ease forwards;
-}
-
-.service-card:nth-child(1).visible { animation-delay: 0s; }
-.service-card:nth-child(2).visible { animation-delay: 0.1s; }
-.service-card:nth-child(3).visible { animation-delay: 0.2s; }
-.service-card:nth-child(4).visible { animation-delay: 0.3s; }
-.service-card:nth-child(5).visible { animation-delay: 0.4s; }
-.service-card:nth-child(6).visible { animation-delay: 0.5s; }
-.service-card:nth-child(7).visible { animation-delay: 0.6s; }
-.service-card:nth-child(8).visible { animation-delay: 0.7s; }
-.service-card:nth-child(9).visible { animation-delay: 0.8s; }
-
-@keyframes cardFadeIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.service-card:hover {
-    border-color: var(--accent-red);
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-hover);
-}
-
-.service-icon {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 16px;
-    color: var(--accent-red);
-    opacity: 0;
-    transform: scale(0);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.service-card.visible .service-icon {
-    opacity: 1;
-    transform: scale(1);
-    transition-delay: 0.3s;
-}
-
-.service-icon svg {
-    width: 100%;
-    height: 100%;
-}
-
-.service-title {
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 18px;
-    color: var(--text-primary);
-    margin-bottom: 8px;
-}
-
-.service-desc {
-    font-family: var(--font-body);
-    font-size: 14px;
-    color: var(--text-secondary);
-    line-height: 1.5;
-}
-
-/* ============================================
-   ABOUT SECTION
-   ============================================ */
-
-.about {
-    padding: 100px 0;
-    background: var(--bg-elevated);
-}
-
-.about-container {
-    display: flex;
-    flex-direction: column;
-    gap: 60px;
-}
-
-@media (min-width: 1024px) {
-    .about-container {
-        flex-direction: row;
-        align-items: center;
-        gap: 80px;
-    }
-    .about-visual {
-        flex: 0 0 45%;
-    }
-    .about-content {
-        flex: 1;
-    }
-}
-
-/* 3D Card */
-.card-3d {
-    perspective: 1000px;
-    width: 100%;
-    max-width: 480px;
-    margin: 0 auto;
-}
-
-.card-3d-inner {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 4/3;
-    border-radius: 12px;
-    overflow: hidden;
-    transform-style: preserve-3d;
-    transition: transform 0.1s ease-out;
-    box-shadow: var(--shadow-card);
-}
-
-.card-3d-bg {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-}
-
-.card-3d-bg::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: 
-        radial-gradient(circle at 20% 50%, rgba(220, 38, 38, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(29, 78, 216, 0.15) 0%, transparent 50%);
-}
-
-.card-3d-bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: 
-        linear-gradient(90deg, transparent 48%, rgba(220, 38, 38, 0.08) 48%, rgba(220, 38, 38, 0.08) 52%, transparent 52%),
-        linear-gradient(0deg, transparent 48%, rgba(29, 78, 216, 0.06) 48%, rgba(29, 78, 216, 0.06) 52%, transparent 52%);
-    transform: skewX(-15deg);
-}
-
-.card-3d-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(10, 10, 11, 0.9) 0%, rgba(10, 10, 11, 0.3) 50%, transparent 100%);
-}
-
-.card-3d-content {
-    position: absolute;
-    bottom: 28px;
-    left: 28px;
-    right: 28px;
-    z-index: 2;
-}
-
-.card-3d-content h3 {
-    font-family: var(--font-heading);
-    font-weight: 800;
-    font-size: 28px;
-    color: var(--text-primary);
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-}
-
-.card-3d-content p {
-    font-family: var(--font-body);
-    font-size: 14px;
-    color: var(--text-secondary);
-    margin-top: 4px;
-}
-
-/* About Content */
-.about-content .section-title {
-    margin-bottom: 4px;
-}
-
-.about-list {
-    margin: 24px 0;
-}
-
-.about-list li {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px 0;
-    font-family: var(--font-body);
-    font-size: 16px;
-    color: var(--text-primary);
-    opacity: 0;
-    transform: translateX(30px);
-}
-
-.about-list li.visible {
-    animation: aboutSlideIn 0.6s ease forwards;
-}
-
-.about-list li:nth-child(1).visible { animation-delay: 0s; }
-.about-list li:nth-child(2).visible { animation-delay: 0.1s; }
-.about-list li:nth-child(3).visible { animation-delay: 0.2s; }
-.about-list li:nth-child(4).visible { animation-delay: 0.3s; }
-.about-list li:nth-child(5).visible { animation-delay: 0.4s; }
-
-@keyframes aboutSlideIn {
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.check-icon {
-    width: 22px;
-    height: 22px;
-    color: var(--accent-red);
-    flex-shrink: 0;
-}
-
-.about-text {
-    font-family: var(--font-body);
-    font-size: 16px;
-    color: var(--text-secondary);
-    line-height: 1.7;
-}
-
-/* ============================================
-   CONTACTS SECTION
-   ============================================ */
-
-.contacts {
-    position: relative;
-    padding: 100px 0;
-    background: var(--bg-primary);
-    overflow: hidden;
-}
-
-.contacts-container {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    position: relative;
-    z-index: 1;
-}
-
-@media (min-width: 1024px) {
-    .contacts-container {
-        flex-direction: row;
-        gap: 60px;
-    }
-    .contacts-info {
-        flex: 0 0 40%;
-    }
-    .contacts-map {
-        flex: 1;
-    }
-}
-
-.contacts-info .section-title {
-    margin-bottom: 4px;
-}
-
-/* Contact Items */
-.contact-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 20px 0;
-    border-bottom: 1px solid var(--border);
-    opacity: 0;
-    transform: translateX(-30px);
-}
-
-.contact-item.visible {
-    animation: contactSlideIn 0.7s ease forwards;
-}
-
-.contact-item:nth-child(3).visible { animation-delay: 0s; }
-.contact-item:nth-child(4).visible { animation-delay: 0.15s; }
-.contact-item:nth-child(5).visible { animation-delay: 0.3s; }
-
-@keyframes contactSlideIn {
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.contact-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: rgba(220, 38, 38, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent-red);
-    flex-shrink: 0;
-}
-
-.contact-icon svg {
-    width: 20px;
-    height: 20px;
-}
-
-.contact-item h4 {
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--text-primary);
-    margin-bottom: 4px;
-}
-
-.contact-item p {
-    font-family: var(--font-body);
-    font-size: 16px;
-    color: var(--text-secondary);
-}
-
-.contact-note {
-    font-size: 14px;
-    color: var(--text-tertiary);
-}
-
-.contact-phone {
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: 18px;
-    color: var(--accent-red);
-    transition: var(--transition);
-}
-
-.contact-phone:hover {
-    color: var(--text-primary);
-}
-
-/* Messengers */
-.messengers {
-    padding-top: 24px;
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-.messengers.visible {
-    animation: fadeInUp 0.6s ease forwards;
-}
-
-.messengers h4 {
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--text-primary);
-    margin-bottom: 16px;
-}
-
-.messengers-row {
-    display: flex;
-    gap: 12px;
-}
-
-.messenger-btn {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--transition);
-    background: var(--bg-elevated);
-    border: 1px solid var(--border);
-    color: var(--text-secondary);
-}
-
-.messenger-btn svg {
-    width: 22px;
-    height: 22px;
-}
-
-.messenger-btn:hover {
-    transform: translateY(-3px);
-    color: var(--text-primary);
-}
-
-.messenger-btn.viber:hover {
-    background: #7360f2;
-    border-color: #7360f2;
-    box-shadow: 0 4px 16px rgba(115, 96, 242, 0.3);
-}
-
-.messenger-btn.whatsapp:hover {
-    background: #25d366;
-    border-color: #25d366;
-    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
-}
-
-.messenger-btn.telegram:hover {
-    background: #0088cc;
-    border-color: #0088cc;
-    box-shadow: 0 4px 16px rgba(0, 136, 204, 0.3);
-}
-
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Map */
-.contacts-map {
-    height: 350px;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    opacity: 0;
-    transform: translateX(30px);
-}
-
-.contacts-map.visible {
-    animation: contactSlideIn 0.7s ease 0.2s forwards;
-}
-
-.contacts-map iframe {
-    width: 100%;
-    height: 100%;
-    filter: grayscale(0.7) contrast(1.1);
-}
-
-@media (min-width: 1024px) {
-    .contacts-map {
-        height: 450px;
-    }
-}
-
-/* ============================================
-   FOOTER
-   ============================================ */
-
-.footer {
-    background: var(--bg-elevated);
-    border-top: 1px solid var(--border);
-    padding: 32px 0;
-}
-
-.footer-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    text-align: center;
-}
-
-.footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.footer-logo-img {
-    height: 40px;
-    width: auto;
-}
-
-.footer-title {
-    display: block;
-    font-family: var(--font-heading);
-    font-weight: 800;
-    font-size: 16px;
-    color: var(--text-primary);
-}
-
-.footer-subtitle {
-    display: block;
-    font-family: var(--font-body);
-    font-size: 11px;
-    color: var(--text-tertiary);
-}
-
-.footer-copy {
-    font-size: 12px;
-    color: var(--text-tertiary);
-}
-
-/* ============================================
-   ANIMATED ELEMENTS (Scroll Triggered)
-   ============================================ */
-
-[data-animate] {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-[data-animate].visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Stagger children */
-.section-header[data-animate].visible ~ .services-grid .service-card,
-.services-grid:has(.service-card.visible) {
-    /* Handled individually in JS */
-}
-
-/* ============================================
-   PREFERS REDUCED MOTION
-   ============================================ */
-
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-    
-    [data-animate] {
-        opacity: 1;
-        transform: none;
-    }
-    
-    .service-card {
-        opacity: 1;
-        transform: none;
-    }
-    
-    .hero-particles {
-        display: none;
-    }
-}
-
-/* ============================================
-   CUSTOM SCROLLBAR
-   ============================================ */
-
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--bg-primary);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--border);
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--text-tertiary);
-}
-
-/* ============================================
-   MOBILE OPTIMIZATIONS
-   ============================================ */
-
-/* Small mobile devices (320px - 360px) */
-@media (max-width: 360px) {
-    html {
-        font-size: 14px;
-    }
-
-    .container {
-        padding: 0 16px;
-    }
-
-    .header {
-        height: 56px;
-    }
-
-    .logo-img {
-        height: 36px;
-    }
-
-    .hero {
-        padding-top: 56px;
-        min-height: 100svh;
-    }
-
-    .hero-title {
-        font-size: clamp(28px, 8vw, 40px);
-        margin-bottom: 12px;
-    }
-
-    .hero-subtitle {
-        font-size: 15px;
-        margin-bottom: 24px;
-    }
-
-    .hero-cta {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .btn {
-        width: 100%;
-        padding: 12px 24px;
-        font-size: 13px;
-    }
-
-    .hero-info {
-        font-size: 12px;
-        flex-wrap: wrap;
-    }
-
-    .services {
-        padding: 60px 0;
-    }
-
-    .services-grid {
-        gap: 16px;
-    }
-
-    .service-card {
-        padding: 20px;
-    }
-
-    .service-icon {
-        width: 40px;
-        height: 40px;
-        margin-bottom: 12px;
-    }
-
-    .service-title {
-        font-size: 16px;
-    }
-
-    .service-desc {
-        font-size: 13px;
-    }
-
-    .about {
-        padding: 60px 0;
-    }
-
-    .about-container {
-        gap: 40px;
-    }
-
-    .card-3d-content h3 {
-        font-size: 22px;
-    }
-
-    .card-3d-content p {
-        font-size: 12px;
-    }
-
-    .about-list li {
-        font-size: 14px;
-        padding: 8px 0;
-    }
-
-    .check-icon {
-        width: 18px;
-        height: 18px;
-    }
-
-    .about-text {
-        font-size: 14px;
-    }
-
-    .contacts {
-        padding: 60px 0;
-    }
-
-    .contact-item {
-        padding: 16px 0;
-        gap: 12px;
-    }
-
-    .contact-icon {
-        width: 40px;
-        height: 40px;
-    }
-
-    .contact-icon svg {
-        width: 18px;
-        height: 18px;
-    }
-
-    .contact-item h4 {
-        font-size: 12px;
-    }
-
-    .contact-item p {
-        font-size: 14px;
-    }
-
-    .contact-phone {
-        font-size: 16px;
-    }
-
-    .messenger-btn {
-        width: 44px;
-        height: 44px;
-    }
-
-    .messenger-btn svg {
-        width: 20px;
-        height: 20px;
-    }
-
-    .contacts-map {
-        height: 280px;
-    }
-
-    .section-header {
-        margin-bottom: 40px;
-    }
-
-    .section-title {
-        font-size: clamp(24px, 6vw, 28px);
-    }
-
-    .section-subtitle {
-        font-size: 14px;
-    }
-
-    .nav-mobile {
-        top: 56px;
-        padding: 20px 16px;
-    }
-
-    .nav-mobile .nav-link {
-        font-size: 14px;
-        padding: 6px 0;
-    }
-}
-
-/* Medium mobile devices (361px - 480px) */
-@media (min-width: 361px) and (max-width: 480px) {
-    .hero-cta {
-        gap: 12px;
-    }
-
-    .btn {
-        padding: 12px 28px;
-        font-size: 13px;
-    }
-
-    .services {
-        padding: 80px 0;
-    }
-
-    .service-card {
-        padding: 24px;
-    }
-
-    .contacts-map {
-        height: 320px;
-    }
-}
-
-/* Landscape orientation on mobile */
-@media (max-height: 500px) and (orientation: landscape) {
-    .hero {
-        min-height: auto;
-        padding: 80px 0 40px;
-    }
-
-    .hero-scroll {
-        display: none;
-    }
-
-    .hero-title {
-        font-size: clamp(24px, 4vw, 32px);
-    }
-
-    .hero-subtitle {
-        font-size: 14px;
-        margin-bottom: 20px;
-    }
-
-    .sphere-canvas {
-        width: 180px;
-        height: 180px;
-    }
-}
-
-/* Safe area for notched devices (iPhone X and newer) */
-@supports (padding: max(0px)) {
-    .header {
-        padding-top: max(0px, env(safe-area-inset-top));
-    }
-
-    .footer {
-        padding-bottom: max(32px, env(safe-area-inset-bottom));
-    }
-
-    .nav-mobile {
-        top: calc(64px + env(safe-area-inset-top));
-    }
-}
-
-/* Fix for iOS Safari viewport height issue */
-@supports (-webkit-touch-callout: none) {
-    .hero {
-        min-height: -webkit-fill-available;
-    }
-}
-
-/* Touch device optimizations */
-@media (hover: none) and (pointer: coarse) {
-    .service-card:hover {
-        transform: none;
-        border-color: var(--border);
-    }
-
-    .btn:hover {
-        transform: none;
-    }
-
-    .messenger-btn:hover {
-        transform: none;
-    }
-
-    /* Increase tap targets */
-    .nav-link {
-        padding: 8px 0;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-    }
-
-    .contact-phone {
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-    }
-
-    .messenger-btn {
-        min-width: 44px;
-        min-height: 44px;
-    }
-}
-
-/* Prevent horizontal scroll */
-html, body {
-    overflow-x: hidden;
-    max-width: 100%;
-}
-
-/* Fix for long words/URLs */
-.contact-item p,
-.service-desc,
-.about-text {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-}
-
-/* Improve readability on small screens */
-@media (max-width: 480px) {
-    .hero-content {
-        text-align: left;
-    }
-
-    .section-header {
-        text-align: center;
-    }
-
-    .about-list li {
-        align-items: flex-start;
-    }
-
-    .check-icon {
-        margin-top: 2px;
-    }
-}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ПРОФІ СЕРВІС — СТО Хмельницький | Ремонт та обслуговування авто</title>
+    <meta name="description" content="Професійний автосервіс у Хмельницькому. Ремонт та повне обслуговування автомобіля. Діагностика, ТО, електрика, підвіска, двигун, АКП, кондиціонер, хімчистка.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <meta name="theme-color" content="#DC2626">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header" id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="logo.png" alt="ПРОФІ СЕРВІС логотип" class="logo-img">
+                <div class="logo-text">
+                    <span class="logo-title">ПРОФІ СЕРВІС</span>
+                    <span class="logo-subtitle">станція технічного обслуговування</span>
+                </div>
+            </a>
+            <nav class="nav" id="nav">
+                <ul class="nav-list">
+                    <li><a href="#services" class="nav-link">Послуги</a></li>
+                    <li><a href="#about" class="nav-link">Про нас</a></li>
+                    <li><a href="#contacts" class="nav-link">Контакти</a></li>
+                    <li><a href="#schedule" class="nav-link">Графік</a></li>
+                </ul>
+            </nav>
+            <a href="tel:+380678877220" class="nav-cta" id="navCta">
+                <span class="typing-text">Зателефонувати</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="racing-stripe-hero"></div>
+        <div class="hero-particles" id="heroParticles"></div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title" data-animate>
+                    <span class="accent">ПРОФЕСІЙНИЙ</span><br>
+                    АВТОСЕРВІС
+                </h1>
+                <p class="hero-subtitle" data-animate>Ремонт та повне обслуговування автомобілів у Хмельницькому</p>
+                <div class="hero-cta" data-animate>
+                    <a href="tel:+380678877220" class="btn btn-primary">Записатись</a>
+                    <a href="#services" class="btn btn-secondary">Наші послуги</a>
+                </div>
+                <p class="hero-info" data-animate>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    Пн-Пт: 9:00-19:00 · вул. Кропивницького, 6А
+                </p>
+            </div>
+            <div class="hero-visual" data-animate>
+                <div id="sphereCanvas" class="sphere-canvas"></div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Гортайте вниз</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="racing-stripe-services"></div>
+        <div class="container">
+            <div class="section-header" data-animate>
+                <h2 class="section-title">НАШІ ПОСЛУГИ</h2>
+                <div class="racing-line"></div>
+                <p class="section-subtitle">Комплексний догляд за вашим автомобілем</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-animate>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="12" y="20" width="40" height="28" rx="4"/>
+                            <path d="M20 20V14a4 4 0 014-4h16a4 4 0 014 4v6"/>
+                            <line x1="24" y1="34" x2="40" y2="34"/>
+                            <line x1="24" y1="40" x2="36" y2="40"/>
+                            <circle cx="18" cy="48" r="2"/>
+                            <circle cx="46" cy="48" r="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Діагностика авто</h3>
+                    <p class="service-desc">Комп'ютерна діагностика всіх систем, виїзд до авто</p>
+                </div>
+                <div class="service-card" data-animate>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M32 8v8"/><path d="M32 48v8"/><path d="M8 32h8"/><path d="M48 32h8"/>
+                            <circle cx="32" cy="32" r="12"/>
+                            <path d="M32 26v6l4 4"/>
+                            <path d="M18 18l4 4"/><path d="M42 18l-4 4"/>
+                            <path d="M18 46l4-4"/><path d="M42 46l-4-4"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Технічне обслуговування</h3>
+                    <p class="service-desc">Планове ТО, заміна витратних матеріалів</p>
+                </div>
+                <div class="service-card" data-animate>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M32 8l-8 16h16l-8 16"/>
+                            <path d="M20 28H8v8h12"/>
+                            <path d="M44 28h12v8H44"/>
+                            <path d="M16 44h32"/>
+                            <circle cx="16" cy="48" r="4"/><circle cx="48" cy="48" r="4"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Автоелектрика</h3>
+                    <p class="service-desc">Ремонт електропроводки, блоків управління</p>
+                </div>
+                <div class="service-card" data-animate>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="32" cy="40" r="12"/>
+                            <path d="M32 28V16"/>
+                            <path d="M26 16h12"/>
+                            <path d="M28 20h8"/>
+                            <path d="M32 8v4"/>
+                            <path d="M20 16h-4v8h4"/>
+                            <path d="M44 16h4v8h-4"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Ремонт підвіски</h3>
+                    <p class="service-desc">Заміна амортизаторів, сайлентблоків, кульових</p>
+                </div>
+                <div class="service-card" data-animate>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 16h24v32H20z"/>
+                            <path d="M24 16V10h16v6"/>
+                            <path d="M28 28h8"/><path d="M28 34h8"/><path d="M28 40h6"/>
+                            <circle cx="32" cy="48" r="2"/>
+                            <path d="M20 24H16v16h4"/>
+                            <path d="M44 24h4v16h-4"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Ремонт двигуна та МКП</h3>
+                    <p class="service-desc">Капітальний та частковий ремонт</p>
+                </div>
+                <div class="service-card" data-animate>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M32 8c-8 0-16 6-16 14 0 8 8 20 16 26 8-6 16-18 16-26 0-8-8-14-16-14z"/>
+                            <path d="M32 18v12"/>
+                            <circle cx="32" cy="18" r="2"/>
+                            <path d="M24 52h16"/>
+                            <path d="M28 46h8"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Заміна масла в АКП</h3>
+                    <p class="service-desc">Повна заміна масла з фільтрами</p>
+                </div>
+                <div class="service-card" data-animate>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="16" y="20" width="32" height="20" rx="4"/>
+                            <path d="M24 20v-4a4 4 0 014-4h8a4 4 0 014 4v4"/>
+                            <path d="M20 40v4h24v-4"/>
+                            <circle cx="24" cy="48" r="2"/><circle cx="40" cy="48" r="2"/>
+                            <path d="M32 26v4"/><circle cx="32" cy="26" r="1"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Ремонт навісного</h3>
+                    <p class="service-desc">Стартер, генератор, турбіни</p>
+                </div>
+                <div class="service-card" data-animate>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="32" cy="32" r="20"/>
+                            <path d="M32 16v8"/>
+                            <path d="M32 40v8"/>
+                            <path d="M16 32h8"/>
+                            <path d="M40 32h8"/>
+                            <path d="M20 20l6 6"/>
+                            <path d="M38 38l6 6"/>
+                            <path d="M20 44l6-6"/>
+                            <path d="M38 26l6-6"/>
+                            <circle cx="32" cy="32" r="4"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Система кондиціонування</h3>
+                    <p class="service-desc">Заправка, ремонт, діагностика</p>
+                </div>
+                <div class="service-card" data-animate>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M24 12l-8 8v24l8 8h16l8-8V20l-8-8z"/>
+                            <path d="M20 28l8 8 16-16"/>
+                            <path d="M24 20h4"/><path d="M36 20h4"/>
+                            <path d="M20 36h-4"/><path d="M48 36h-4"/>
+                            <circle cx="24" cy="44" r="2"/><circle cx="40" cy="44" r="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Хімчистка салону</h3>
+                    <p class="service-desc">Професійна чистка інтер'єру</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container about-container">
+            <div class="about-visual" data-animate>
+                <div class="card-3d" id="card3d">
+                    <div class="card-3d-inner">
+                        <div class="card-3d-bg"></div>
+                        <div class="card-3d-overlay"></div>
+                        <div class="card-3d-content">
+                            <h3>ПРОФІ СЕРВІС</h3>
+                            <p>станція технічного обслуговування</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-content">
+                <h2 class="section-title" data-animate>ЧОМУ ОБИРАЮТЬ НАС</h2>
+                <div class="racing-line" data-animate></div>
+                <ul class="about-list">
+                    <li data-animate>
+                        <span class="check-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        Професійне обладнання
+                    </li>
+                    <li data-animate>
+                        <span class="check-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        Оригінальні та альтернативні запчастини
+                    </li>
+                    <li data-animate>
+                        <span class="check-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        Гарантія на роботи
+                    </li>
+                    <li data-animate>
+                        <span class="check-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        Комфортна зона очікування
+                    </li>
+                    <li data-animate>
+                        <span class="check-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        Виїзна діагностика
+                    </li>
+                </ul>
+                <p class="about-text" data-animate>
+                    Ми використовуємо сучасне діагностичне обладнання та пропонуємо широкий вибір запчастин від різних виробників. Підбір запчастин на вибір клієнта — оригінал або якісні аналоги.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacts Section -->
+    <section class="contacts" id="contacts">
+        <div class="racing-stripe-contacts"></div>
+        <div class="container contacts-container">
+            <div class="contacts-info">
+                <h2 class="section-title" data-animate>КОНТАКТИ</h2>
+                <div class="racing-line" data-animate></div>
+                
+                <div class="contact-item" data-animate>
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4>Адреса</h4>
+                        <p>м. Хмельницький, вул. Кропивницького, 6А</p>
+                        <span class="contact-note">(ТЦ «Ріко», Макаронна фабрика)</span>
+                    </div>
+                </div>
+                
+                <div class="contact-item" data-animate id="schedule">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4>Графік роботи</h4>
+                        <p>Пн-Пт: 9:00-19:00</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item" data-animate>
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4>Телефон</h4>
+                        <a href="tel:+380678877220" class="contact-phone">+38 (067) 887-72-20</a>
+                    </div>
+                </div>
+                
+               <div class="messengers" data-animate>
+                    <h4>Пишіть у месенджери</h4>
+                    <div class="messengers-row">
+                        <a href="viber://chat?number=%2B380678877220" class="messenger-btn viber" aria-label="Viber" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12.001 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2.001 17.523 2.001 12 6.478 2 12.001 2zm0 1.637a8.363 8.363 0 100 16.726 8.363 8.363 0 000-16.726zm-1.997 5.274c.167-.357.517-.566.889-.566h2.214c.372 0 .722.209.889.566l.896 1.915c.167.357.105.786-.157 1.075l-.896.99c-.262.289-.324.718-.157 1.075l.896 1.915c.167.357.045.786-.283 1.014l-1.793 1.242c-.328.228-.763.228-1.091 0l-1.793-1.242c-.328-.228-.45-.657-.283-1.014l.896-1.915c.167-.357.105-.786-.157-1.075l-.896-.99c-.262-.289-.324-.718-.157-1.075l.896-1.915zm1.103 1.814l-.547 1.168 1.441 1.588 1.441-1.588-.547-1.168h-1.788zm.894 4.478l-1.334.923 1.334.923 1.334-.923-1.334-.923z"/>
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/380678877220" class="messenger-btn whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            </svg>
+                        </a>
+                        <a href="https://t.me/+380678877220" class="messenger-btn telegram" aria-label="Telegram" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            
+            </div>
+            <div class="contacts-map" data-animate>
+                <iframe
+                    src="https://www.google.com/maps?q=%D0%B2%D1%83%D0%BB.+%D0%9A%D1%80%D0%BE%D0%BF%D0%B8%D0%B2%D0%BD%D0%B8%D1%86%D1%8C%D0%BA%D0%BE%D0%B3%D0%BE+6%D0%90,+%D0%A5%D0%BC%D0%B5%D0%BB%D1%8C%D0%BD%D0%B8%D1%86%D1%8C%D0%BA%D0%B8%D0%B9&output=embed"
+                    width="100%"
+                    height="100%"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-logo">
+                <img src="logo.png" alt="ПРОФІ СЕРВІС" class="footer-logo-img">
+                <div>
+                    <span class="footer-title">ПРОФІ СЕРВІС</span>
+                    <span class="footer-subtitle">станція технічного обслуговування</span>
+                </div>
+            </div>
+            <p class="footer-copy">© 2026 ПРОФІ СЕРВІС. Всі права захищені.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
