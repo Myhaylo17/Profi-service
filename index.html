@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ПРОФІ СЕРВІС — СТО Хмельницький | Ремонт та обслуговування авто</title>
+    <meta name="description" content="Професійний автосервіс у Хмельницькому. Ремонт та повне обслуговування автомобіля. Діагностика, ТО, електрика, підвіска, двигун, АКП, кондиціонер, хімчистка.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+<base target="_blank">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header" id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="assets/logo.png" alt="ПРОФІ СЕРВІС логотип" class="logo-img">
+                <div class="logo-text">
+                    <span class="logo-title">ПРОФІ СЕРВІС</span>
+                    <span class="logo-subtitle">станція технічного обслуговування</span>
+                </div>
+            </a>
+            <nav class="nav" id="nav">
+                <ul class="nav-list">
+                    <li><a href="#services" class="nav-link">Послуги</a></li>
+                    <li><a href="#about" class="nav-link">Про нас</a></li>
+                    <li><a href="#contacts" class="nav-link">Контакти</a></li>
+                    <li><a href="#schedule" class="nav-link">Графік</a></li>
+                </ul>
+            </nav>
+            <a href="tel:+380000000000" class="nav-cta" id="navCta">
+                <span class="typing-text">Зателефонувати</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="racing-stripe-hero"></div>
+        <div class="hero-particles" id="heroParticles"></div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title" data-animate>
+                    <span class="accent">ПРОФЕСІЙНИЙ</span><br>
+                    АВТОСЕРВІС
+                </h1>
+                <p class="hero-subtitle" data-animate>Ремонт та повне обслуговування автомобілів у Хмельницькому</p>
+                <div class="hero-cta" data-animate>
+                    <a href="tel:+380000000000" class="btn btn-primary">Записатись</a>
+                    <a href="#services" class="btn btn-secondary">Наші послуги</a>
+                </div>
+                <p class="hero-info" data-animate>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    Пн-Пт: 9:00-19:00 · вул. Кропивницького, 6А
+                </p>
+            </div>
+            <div class="hero-visual" data-animate>
+                <div id="sphereCanvas" class="sphere-canvas"></div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Гортайте вниз</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="racing-stripe-services"></div>
+        <div class="container">
+            <div class="section-header" data-animate>
+                <h2 class="section-title">НАШІ ПОСЛУГИ</h2>
+                <div class="racing-line"></div>
+                <p class="section-subtitle">Комплексний догляд за вашим автомобілем</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-animate>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="12" y="20" width="40" height="28" rx="4"/>
+                            <path d="M20 20V14a4 4 0 014-4h16a4 4 0 014 4v6"/>
+                            <line x1="24" y1="34" x2="40" y2="34"/>
+                            <line x1="24" y1="40" x2="36" y2="40"/>
+                            <circle cx="18" cy="48" r="2"/>
+                            <circle cx="46" cy="48" r="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Діагностика авто</h3>
+                    <p class="service-desc">Комп'ютерна діагностика всіх систем, виїзд до авто</p>
+                </div>
+                <div class="service-card" data-animate>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M32 8v8"/><path d="M32 48v8"/><path d="M8 32h8"/><path d="M48 32h8"/>
+                            <circle cx="32" cy="32" r="12"/>
+                            <path d="M32 26v6l4 4"/>
+                            <path d="M18 18l4 4"/><path d="M42 18l-4 4"/>
+                            <path d="M18 46l4-4"/><path d="M42 46l-4-4"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Технічне обслуговування</h3>
+                    <p class="service-desc">Планове ТО, заміна витратних матеріалів</p>
+                </div>
+                <div class="service-card" data-animate>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M32 8l-8 16h16l-8 16"/>
+                            <path d="M20 28H8v8h12"/>
+                            <path d="M44 28h12v8H44"/>
+                            <path d="M16 44h32"/>
+                            <circle cx="16" cy="48" r="4"/><circle cx="48" cy="48" r="4"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Автоелектрика</h3>
+                    <p class="service-desc">Ремонт електропроводки, блоків управління</p>
+                </div>
+                <div class="service-card" data-animate>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="32" cy="40" r="12"/>
+                            <path d="M32 28V16"/>
+                            <path d="M26 16h12"/>
+                            <path d="M28 20h8"/>
+                            <path d="M32 8v4"/>
+                            <path d="M20 16h-4v8h4"/>
+                            <path d="M44 16h4v8h-4"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Ремонт підвіски</h3>
+                    <p class="service-desc">Заміна амортизаторів, сайлентблоків, кульових</p>
+                </div>
+                <div class="service-card" data-animate>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 16h24v32H20z"/>
+                            <path d="M24 16V10h16v6"/>
+                            <path d="M28 28h8"/><path d="M28 34h8"/><path d="M28 40h6"/>
+                            <circle cx="32" cy="48" r="2"/>
+                            <path d="M20 24H16v16h4"/>
+                            <path d="M44 24h4v16h-4"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Ремонт двигуна та МКП</h3>
+                    <p class="service-desc">Капітальний та частковий ремонт</p>
+                </div>
+                <div class="service-card" data-animate>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M32 8c-8 0-16 6-16 14 0 8 8 20 16 26 8-6 16-18 16-26 0-8-8-14-16-14z"/>
+                            <path d="M32 18v12"/>
+                            <circle cx="32" cy="18" r="2"/>
+                            <path d="M24 52h16"/>
+                            <path d="M28 46h8"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Заміна масла в АКП</h3>
+                    <p class="service-desc">Повна заміна масла з фільтрами</p>
+                </div>
+                <div class="service-card" data-animate>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="16" y="20" width="32" height="20" rx="4"/>
+                            <path d="M24 20v-4a4 4 0 014-4h8a4 4 0 014 4v4"/>
+                            <path d="M20 40v4h24v-4"/>
+                            <circle cx="24" cy="48" r="2"/><circle cx="40" cy="48" r="2"/>
+                            <path d="M32 26v4"/><circle cx="32" cy="26" r="1"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Ремонт навісного</h3>
+                    <p class="service-desc">Стартер, генератор, турбіни</p>
+                </div>
+                <div class="service-card" data-animate>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="32" cy="32" r="20"/>
+                            <path d="M32 16v8"/>
+                            <path d="M32 40v8"/>
+                            <path d="M16 32h8"/>
+                            <path d="M40 32h8"/>
+                            <path d="M20 20l6 6"/>
+                            <path d="M38 38l6 6"/>
+                            <path d="M20 44l6-6"/>
+                            <path d="M38 26l6-6"/>
+                            <circle cx="32" cy="32" r="4"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Система кондиціонування</h3>
+                    <p class="service-desc">Заправка, ремонт, діагностика</p>
+                </div>
+                <div class="service-card" data-animate>
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M24 12l-8 8v24l8 8h16l8-8V20l-8-8z"/>
+                            <path d="M20 28l8 8 16-16"/>
+                            <path d="M24 20h4"/><path d="M36 20h4"/>
+                            <path d="M20 36h-4"/><path d="M48 36h-4"/>
+                            <circle cx="24" cy="44" r="2"/><circle cx="40" cy="44" r="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Хімчистка салону</h3>
+                    <p class="service-desc">Професійна чистка інтер'єру</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container about-container">
+            <div class="about-visual" data-animate>
+                <div class="card-3d" id="card3d">
+                    <div class="card-3d-inner">
+                        <div class="card-3d-bg"></div>
+                        <div class="card-3d-overlay"></div>
+                        <div class="card-3d-content">
+                            <h3>ПРОФІ СЕРВІС</h3>
+                            <p>станція технічного обслуговування</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-content">
+                <h2 class="section-title" data-animate>ЧОМУ ОБИРАЮТЬ НАС</h2>
+                <div class="racing-line" data-animate></div>
+                <ul class="about-list">
+                    <li data-animate>
+                        <span class="check-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        Професійне обладнання
+                    </li>
+                    <li data-animate>
+                        <span class="check-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        Оригінальні та альтернативні запчастини
+                    </li>
+                    <li data-animate>
+                        <span class="check-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        Гарантія на роботи
+                    </li>
+                    <li data-animate>
+                        <span class="check-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        Комфортна зона очікування
+                    </li>
+                    <li data-animate>
+                        <span class="check-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        Виїзна діагностика
+                    </li>
+                </ul>
+                <p class="about-text" data-animate>
+                    Ми використовуємо сучасне діагностичне обладнання та пропонуємо широкий вибір запчастин від різних виробників. Підбір запчастин на вибір клієнта — оригінал або якісні аналоги.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacts Section -->
+    <section class="contacts" id="contacts">
+        <div class="racing-stripe-contacts"></div>
+        <div class="container contacts-container">
+            <div class="contacts-info">
+                <h2 class="section-title" data-animate>КОНТАКТИ</h2>
+                <div class="racing-line" data-animate></div>
+                
+                <div class="contact-item" data-animate>
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4>Адреса</h4>
+                        <p>м. Хмельницький, вул. Кропивницького, 6А</p>
+                        <span class="contact-note">(ТЦ «Ріко», Макаронна фабрика)</span>
+                    </div>
+                </div>
+                
+                <div class="contact-item" data-animate id="schedule">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4>Графік роботи</h4>
+                        <p>Пн-Пт: 9:00-19:00</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item" data-animate>
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4>Телефон</h4>
+                        <a href="tel:+380000000000" class="contact-phone">+38 (XXX) XXX-XX-XX</a>
+                    </div>
+                </div>
+                
+                <div class="messengers" data-animate>
+                    <h4>Пишіть у месенджери</h4>
+                    <div class="messengers-row">
+                        <a href="viber://chat?number=%2B380000000000" class="messenger-btn viber" aria-label="Viber">
+                            <svg viewBox="0 0 32 32"><path fill="currentColor" d="M16 2C8.268 2 2 7.924 2 15.328c0 3.514 1.364 6.698 3.564 9.058V28l4.633-1.39A11.87 11.87 0 0016 28c7.732 0 14-5.924 14-13.328S23.732 2 16 2zm7.386 9.94c.242.66.374 1.356.374 2.076 0 3.94-3.22 7.158-7.186 7.158a7.56 7.56 0 01-3.42-.814l-3.48 1.044 1.14-3.028a6.46 6.46 0 01-.9-3.36c0-3.94 3.22-7.158 7.186-7.158 1.88 0 3.6.7 4.94 1.862l-.34.34c-.12.12-.26.22-.42.28a.71.71 0 01-.52 0c-.2-.08-.4-.16-.6-.22a5.66 5.66 0 00-2.06-.38 5.78 5.78 0 00-5.786 5.786c0 .94.22 1.84.62 2.64l.18.36-.62 1.66 1.76-.52.26.16c.74.46 1.6.72 2.52.72a5.78 5.78 0 005.786-5.786c0-.5-.06-1-.18-1.46-.06-.24-.02-.5.12-.7.1-.14.24-.24.4-.3.16-.06.34-.06.5.02.38.18.74.4 1.08.66.16.12.28.28.34.46.06.18.04.38-.04.56z"/></svg>
+                        </a>
+                        <a href="https://wa.me/380000000000" class="messenger-btn whatsapp" aria-label="WhatsApp">
+                            <svg viewBox="0 0 32 32"><path fill="currentColor" d="M16 2C8.268 2 2 8.268 2 16c0 2.585.696 5.006 1.912 7.088L2 30l7.1-1.89A13.94 13.94 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.2a11.3 11.3 0 01-5.8-1.6l-.4-.24-4.2 1.12 1.12-4.08-.28-.44A11.24 11.24 0 014.8 16C4.8 9.492 10.092 4.2 16.4 4.2c6.308 0 11.4 5.092 11.4 11.4 0 6.308-5.292 11.6-11.8 11.6zm6.52-8.52c-.36-.18-2.12-1.04-2.44-1.16-.32-.12-.56-.18-.8.18s-.92 1.16-1.12 1.4-.44.28-.8.08a10.08 10.08 0 01-2.96-1.84 11.08 11.08 0 01-2.08-2.56c-.22-.36 0-.56.16-.74.16-.16.36-.44.52-.66.18-.22.22-.38.34-.64.1-.26.06-.48-.02-.66-.08-.18-.8-1.92-1.08-2.64-.28-.7-.56-.6-.8-.62l-.68-.02c-.24 0-.62.08-.94.42-.32.34-1.24 1.2-1.24 2.94 0 1.74 1.28 3.42 1.46 3.66.18.24 2.52 3.84 6.1 5.38.84.36 1.5.58 2.02.74.84.26 1.6.22 2.2.14.68-.1 2.12-.86 2.42-1.7.3-.84.3-1.54.22-1.7z"/></svg>
+                        </a>
+                        <a href="https://t.me/username" class="messenger-btn telegram" aria-label="Telegram">
+                            <svg viewBox="0 0 32 32"><path fill="currentColor" d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm7.064 9.68l-2.48 11.72c-.2.88-.72 1.1-1.44.68l-4-2.94-1.92 1.86c-.22.22-.4.4-.8.4l.28-4.08 7.42-6.7c.32-.28-.08-.44-.5-.16l-9.16 5.78-3.96-1.24c-.86-.26-.88-.86.18-1.28l15.48-5.98c.72-.26 1.34.18 1.1 1.28z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="contacts-map" data-animate>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2594.0!2d27.0!3d49.42!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4732077c234d撕7%3A0x6f7c撕c8撕4撕!2z0LLRg9C70LjRhtGPINCa0YDQvtC90L3QuNGG0Y8sIDbQkCwg0KXQvNC10LvQuNGG0Y8!5e0!3m2!1suk!2sua!4v1"
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-logo">
+                <img src="assets/logo.png" alt="ПРОФІ СЕРВІС" class="footer-logo-img">
+                <div>
+                    <span class="footer-title">ПРОФІ СЕРВІС</span>
+                    <span class="footer-subtitle">станція технічного обслуговування</span>
+                </div>
+            </div>
+            <p class="footer-copy">© 2025 ПРОФІ СЕРВІС. Всі права захищені.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
